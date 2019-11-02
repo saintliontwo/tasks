@@ -1,0 +1,37 @@
+# -*- coding: utf-8 -*-
+
+import sys
+
+
+def txt_converter(filepath):
+    """Функция принимает путь к txt-файлу, извлекает строковые данные и преобразовывает их в список"""
+    try:
+        with open(filepath, ) as file:
+            raw_list = file.read()[1:-1].split(', ')
+            new_list = []
+            for num in raw_list:
+                new_list.append(int(num))
+        return new_list
+    except:
+        pass  # здесь должны обрабатываться ошибки
+
+
+def magic_points(l: list):
+    """Функция подчитывает очки при помощи greedy-алгоритма"""
+    count = l.pop(0)
+    while len(l) != 0:
+        if len(l) == 2:
+            count += l[1]
+            break
+        if l[0] >= l[1]:
+            count += l.pop(1)
+        else:
+            count += l[0]
+        l.pop(0)
+    return count
+
+
+if __name__ == '__main__':
+    list_ = txt_converter(sys.argv[1])
+    result = magic_points(list_)
+    print(result)
