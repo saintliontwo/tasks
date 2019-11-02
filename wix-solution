@@ -30,7 +30,7 @@ def solution(S: str, K: int) -> int:
 
 
 if __name__ == '__main__':
-    K = 3
+    K = 12
     S = "SMS messages are really short"
     print(solution(S, K))
     
