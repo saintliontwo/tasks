@@ -1,0 +1,36 @@
+"""
+    task: https://gist.github.com/romabelka/8bb8ef40e9e991ea1728eb8105c57cb2
+"""
+
+
+def solution(S: str, K: int) -> int:
+    """Function which split text(S) to messages"""
+
+    counter = 0
+    current_msg = str()
+    msgs = []
+
+    for word in S.split():
+        if len(word) > K:
+            return -1
+
+        if counter == 0:
+            current_msg += word
+            counter += len(word)
+        elif counter + len(word) <= K:
+            current_msg += ' ' + word
+            counter += 1 + len(word)
+        elif counter + len(word) > K:
+            msgs.append([current_msg])
+            current_msg = word
+            counter = len(word)
+            if word == S.split()[-1]:
+                msgs += [word]
+    return len(msgs)
+
+
+if __name__ == '__main__':
+    K = 3
+    S = "SMS messages are really short"
+    print(solution(S, K))
+    
