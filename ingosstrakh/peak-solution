@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
 
+# Программа запускается командой "python peak-solution.py filepath", где filepath - путь к файлу 'MountainData.txt';
+
+
 import sys
 
 
 def txt_converter(filepath):
-    """Функция принимает путь к txt-файлу (filepath), извлекает строковые данные и преобразовывает их в список"""
+    """Функция в качестве аргумента принимает путь к txt-файлу, извлекает строковые данные и преобразовывает их в список"""
     try:
         with open(filepath, ) as file:
             raw_list = file.read()[1:-1].split(', ')
